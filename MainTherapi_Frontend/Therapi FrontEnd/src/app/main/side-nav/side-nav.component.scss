@@ -1,0 +1,123 @@
+.sidenav-container {
+  height: 100vh;
+  display: flex;
+  background-color: var(--bg-color);
+  /* Global light/dark background */
+}
+
+::ng-deep.mat-drawer-inner-container {
+  background-color: var(--card-bg) !important;
+  /* Global card background */
+  overflow: visible !important;
+}
+
+::ng-deep.mat-drawer-side {
+  border: none;
+}
+
+::ng-deep.mat-drawer {
+  scrollbar-width: none;
+}
+
+::ng-deep .mdc-tooltip__surface {
+  background-color: var(--primary-color) !important;
+}
+
+.list-items {
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  color: var(--text-color);
+  /* Global text color */
+}
+
+.sessions-list {
+  margin-top: 5px;
+  padding: 3px 10px;
+
+  p {
+    // font-size: 14px;
+    padding: 7px 6px;
+    color: var(--text-color);
+    /* Global text color */
+    margin: 0;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &:hover {
+      border-radius: 7px;
+      background-color: var(--card-bg);
+      /* Global hover background */
+    }
+
+    &.active-session {
+      font-weight: bold;
+      color: var(--primary-color);
+      /* Global primary color */
+      background-color: rgba(139, 127, 215, 0.1);
+      /* Light overlay of primary color */
+      border-radius: 7px;
+    }
+  }
+}
+
+.side-nav {
+  width: 250px;
+  background: var(--bg-color);
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid var(--card-bg);
+}
+
+mat-nav-list {
+  padding: 0;
+  overflow-y: auto;
+  max-height: calc(100vh - 200px);
+  scrollbar-width: none
+}
+
+.section-header {
+  background-color: var(--bg-color);
+  padding: 10px 16px;
+  // font-size: 14px;
+  font-weight: 500;
+  color: var(--text-color);
+  // margin-top: 15px;
+  margin-bottom: 15px;
+  border-radius: 7px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+// .section-hr {
+//   position: sticky;
+//   top: 0;
+//   z-index: 10;
+// }
+
+mat-icon {
+  // font-size: 20px;
+  color: var(--primary-color);
+  /* Global primary color */
+}
+
+.active-link {
+  font-weight: bold;
+  color: var(--primary-color);
+  /* Highlight active link with primary color */
+  background-color: rgba(139, 127, 215, 0.1);
+  /* Light overlay of primary color */
+}
+
+
+@media screen and (max-width:599px) {
+  .list-items {
+    justify-content: space-between !important;
+  }
+}
+
+@media screen and (min-width:600px) and (max-width:1023px) {
+  .list-items {
+    justify-content: space-between !important;
+  }
+}

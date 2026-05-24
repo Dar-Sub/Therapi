@@ -1,0 +1,139 @@
+<mat-sidenav-container ngSkipHydration style="display: contents;">
+    <mat-sidenav-content style="margin: none !important; overflow: hidden; ">
+        <mat-sidenav [mode]="sidenavMode" [(opened)]="isSidenavOpen " class="custom-sidenav"
+            style="width: 290px; height: 82vh; margin-top: 15px; margin-left: 100px">
+            <app-side-nav [isSidenavOpen]="isSidenavOpen" (closeSidenavEvent)="closeSidenav()"></app-side-nav>
+        </mat-sidenav>
+        <div class="">
+            <div class="mobile_chat_header d-flex align-items-center justify-content-between d-flex d-sm-flex d-md-flex d-lg-none"
+                style="padding: 0px 25px 0px 18px; margin-top: 20px;">
+                <!-- <button mat-icon-button (click)="toggleSidenav()"
+                    class="menu-icon d-flex d-sm-flex d-md-flex d-lg-none font-32">
+                    <mat-icon>menu</mat-icon>
+                </button> -->
+                <img src="/images/grid-4.svg" alt="menu" (click)="toggleSidenav();">
+                <!-- <div class="mobile_chat_header_butns d-flex align-items-center gap-2 ">
+                    <span class="font-12">Time Remaining: 30{{timeRemaining}}</span>
+                    <span class="font-12">Sessions Left: 5{{sessionsLeft}}</span>
+                    <span class="font-12" style="text-align: center;">🔴 End Chat</span>
+                </div> -->
+            </div>
+
+            <div class="chat-body">
+                <!-- <div class="chat-header d-none d-sm-none d-md-none d-lg-flex">
+                    <span class="font-14">⏱️ Time Remaining: 30{{timeRemaining}}</span>
+                    <span class="font-14">💬 Sessions Left: 5{{sessionsLeft}}</span>
+                    <span class="font-14" style="text-align: center;">🔴 End Chat</span>
+                </div> -->
+                <div class="chat-container" *ngIf="!isChatLoading">
+                    <div class="messages-container" #scrollContainer *ngIf="isThread">
+                        <div *ngFor="let message of messages; let i = index" class="message"
+                            [ngClass]="{'user-message': message.sender === 'user', 'bot-message': message.sender === 'ai'}">
+                            <div class="message-content">
+                                <img *ngIf="message.sender === 'ai'" src="images/favicon1 (1).png" alt="Bot"
+                                    class="avatar bot-avatar" />
+                                <div class="message-bubble font-12">
+                                    <ng-container *ngIf="!isExpanded(i)">
+                                        {{ message.content | slice:0:500 }}
+                                        <span *ngIf="message.content.length > 500" (click)="toggleContent(i)"
+                                            class="read-more">
+                                            Read More...
+                                        </span>
+                                    </ng-container>
+                                    <ng-container *ngIf="isExpanded(i)">
+                                        {{ message.content }}
+                                        <span (click)="toggleContent(i)" class="read-less">Read Less</span>
+                                    </ng-container>
+                                    <!-- <div class="message-timestamp font-12"
+                                        [ngClass]="{ 'user_color': message.sender === 'user', 'bot_color': message.sender !== 'user' }">
+                                        {{ message.timestamp | date:'shortTime' }}
+                                    </div> -->
+                                </div>
+                                <!-- <img *ngIf="message.sender === 'user'"
+                                    src="data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='32' height='32' rx='8' fill='%23FFA726'/%3E%3Cpath d='M16 8C11.6 8 8 11.6 8 16C8 20.4 11.6 24 16 24C20.4 24 24 20.4 24 16C24 11.6 20.4 8 16 8ZM16 22C12.7 22 10 19.3 10 16C10 12.7 12.7 10 16 10C19.3 10 22 12.7 22 16C22 19.3 19.3 22 16 22Z' fill='white'/%3E%3C/svg%3E"
+                                    alt="User" class="avatar user-avatar" /> -->
+                                <img *ngIf="message.sender === 'user'"
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%236e5aa7'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='central' fill='white' font-size='16' font-family='Arial, sans-serif'%3EU%3C/text%3E%3C/svg%3E"
+                                    alt="User" class="avatar user-avatar" />
+                            </div>
+                        </div>
+
+                        <div *ngIf="isLoading" class="d-flex flex-row bot-message message bot">
+                            <img src="data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='32' height='32' rx='8' fill='%238B7FD7'/%3E%3Cpath d='M16 8C11.6 8 8 11.6 8 16C8 20.4 11.6 24 16 24C20.4 24 24 20.4 24 16C24 11.6 20.4 8 16 8ZM16 22C12.7 22 10 19.3 10 16C10 12.7 12.7 10 16 10C19.3 10 22 12.7 22 16C22 19.3 19.3 22 16 22Z' fill='white'/%3E%3C/svg%3E"
+                                alt="Bot" class="avatar bot-avatar" />
+                            <div class="message-bubble ">
+                                <div class="loader">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="warning_container d-flex flex-column align-items-center justify-content-end pb-3"
+                            *ngIf="!messages || messages.length === 0">
+                            <div class="warning-center d-flex flex-row align-items-start text-center gap-1">
+                                <i class="fa-solid fa-circle-exclamation" style="color: #54656f; margin-top: 3px;"></i>
+                                <span class="font-14">Start by sharing your health-related concerns, and we'll guide you
+                                    with
+                                    care</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="create-thread-main d-flex  justify-content-center align-items-center">
+                        <div class="create-thread d-flex flex-column justify-content-center align-items-center text-center"
+                            *ngIf="!isThread">
+                            <div class="thread-card">
+                                <h1 class="thread-title font-24">Create a session</h1>
+                                <div class="form-group">
+                                    <label for="session-name" class="form-label font-16">Session Title</label>
+                                    <input id="session-name" type="text" class="form-input font-16"
+                                        [formControl]="threadName"
+                                        placeholder="Define your session with a compelling title...">
+                                </div>
+                                <button type="submit" class="btn-create font-16"
+                                    [disabled]="isCreateLoading || threadName.invalid" (click)="createSession()">
+                                    <div class="spinner-border" role="status" *ngIf="isCreateLoading">
+                                    </div>
+                                    {{isCreateLoading ? 'Please wait...' :'Create'}}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="input-container d-flex align-items-center justify-content-center w-100"
+                        style="position: sticky; bottom: 10px;" *ngIf="isThread">
+                        <div class="input-container-body d-flex align-items-center justify-content-center w-100">
+                            <div class="input-wrapper d-flex align-items-center position-relative w-100 gap-2">
+                                <div contenteditable="true" class="message-input font-14" #messageInput
+                                    (input)="onInput($event)" (keyup.enter)="sendMessages()"
+                                    data-placeholder="Type a message..."></div>
+                                <button class="btn-send" (click)="sendMessages()">
+                                    Send
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+<div class="full-page-loader" *ngIf="isChatLoading">
+    <div class="shimmer-chat">
+        <div class="shimmer-bubble user long"></div>
+        <div class="shimmer-bubble ai_small medium_small"></div>
+        <div class="shimmer-bubble ai medium"></div>
+        <div class="shimmer-bubble user_small short"></div>
+        <div class="shimmer-bubble user_small_25 shorter"></div>
+        <div class="shimmer-bubble user medium"></div>
+        <div class="shimmer-bubble ai_small short"></div>
+        <div class="shimmer-bubble ai_small_25 shorter"></div>
+        <div class="shimmer-bubble ai long"></div>
+        <div class="shimmer-bubble user_small_25 shorter"></div>
+        <div class="shimmer-bubble user_small medium"></div>
+    </div>
+</div>

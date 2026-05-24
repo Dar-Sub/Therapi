@@ -1,0 +1,6 @@
+@AiTherapy_HostAddress = http://localhost:5048
+
+GET {{AiTherapy_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

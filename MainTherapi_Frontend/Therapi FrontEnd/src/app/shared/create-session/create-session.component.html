@@ -1,0 +1,15 @@
+<div class="main d-flex align-items-center justify-content-center">
+    <div class="create-thread d-flex flex-column justify-content-center align-items-center text-center">
+
+        <button class="close-btn" (click)="closePopup()">×</button>
+        <div class="thread-card">
+            <h1 class="thread-title font-24">Create a session</h1>
+            <div class="form-group">
+                <label for="session-name" class="form-label font-16">Session Name</label>
+                <input id="session-name" type="text" class="form-input font-16" [formControl]="threadName"
+                    placeholder="Enter session name">
+            </div>
+            <button class="btn-create" (click)="createSession()">Create</button>
+        </div>
+    </div>
+</div>

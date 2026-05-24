@@ -1,0 +1,35 @@
+<div class="login-container">
+    <img src="/images/favicon1 (1).png" alt="Logo" class="logo" />
+    <div class="login-card">
+        <form [formGroup]="loginForm">
+            <div class="input-group">
+                <input type="email" placeholder="E-mail" class="input-field" formControlName="email"
+                    (keydown.enter)="focusNext('password')" />
+                <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid" class="error mt-2 ms-2">
+                    <small style="color: brown;"> {{ emailError }}</small>
+                </div>
+            </div>
+            <div class="input-group password-group">
+                <div class="password-group-body">
+                    <input [type]="passwordFieldType" type="password" placeholder="Password" class="input-field"
+                        id="password" formControlName="password" (keydown.enter)="login()" />
+                    <span class="toggle-password" (click)="togglePassword()" style="border-radius: 15px;">
+                        <i class="fa-solid fa-eye show-icon" *ngIf="passwordFieldType === 'password'"></i>
+                        <i class="fa-solid fa-eye-slash hide-icon" *ngIf="passwordFieldType === 'text'"></i>
+                    </span>
+                </div>
+
+                <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid"
+                    class="error mt-2 ms-2">
+                    <small style="color: brown;"> {{ passwordError }}</small>
+                </div>
+            </div>
+            <button type="submit" class="login-button" (click)="login()" [disabled]="isLoading || loginForm.invalid">
+                <div class="spinner-border" role="status" *ngIf="isLoading">
+                </div>
+                {{isLoading ? 'Please wait...' :'Login'}}
+            </button>
+            <button type="button" class="signup-button" (click)="navigateToSignUp()">Sign Up</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+::-webkit-scrollbar{
+    display: none;
+}
+
+@media screen and (max-width:599px) {
+    .router_class{
+        overflow-y: scroll;
+        height:auto !important;
+    }
+}
+
+@media screen and (min-width:600px) and (max-width:1023px) {
+    .router_class{
+        overflow-y: scroll;
+        height:auto !important;
+    }
+}
+
+@media screen and (min-width:1024px) and (max-width:1440px) {
+    .router_class{
+        overflow-y: scroll;
+    }
+}
+
+@media screen and (min-width:1441px) {
+    .router_class{
+        overflow-y: hidden;
+    }
+}

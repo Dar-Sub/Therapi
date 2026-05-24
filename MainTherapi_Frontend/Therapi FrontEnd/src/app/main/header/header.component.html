@@ -1,0 +1,73 @@
+<div class="header d-flex align-items-center justify-content-center">
+    <div class="header_body d-flex align-items-center justify-content-between">
+        <div class="logo_container">
+            <img src="images/favicon1 (1).png" alt="THERAPi Logo">
+            <!-- <img src="data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='32' height='32' rx='8' fill='%238B7FD7'/%3E%3Cpath d='M16 8C11.6 8 8 11.6 8 16C8 20.4 11.6 24 16 24C20.4 24 24 20.4 24 16C24 11.6 20.4 8 16 8ZM16 22C12.7 22 10 19.3 10 16C10 12.7 12.7 10 16 10C19.3 10 22 12.7 22 16C22 19.3 19.3 22 16 22Z' fill='white'/%3E%3C/svg%3E"
+                alt="THERAPi Logo"> -->
+            <span class="logo font-16" (click)="navigateToHome()">THERAPi</span>
+        </div>
+        <div class="theme-switcher d-none d-sm-none d-md-none d-lg-flex" style="position: relative;">
+            <button class="theme-switcher-btn d-flex flex-row align-items-center justify-content-center gap-2 font-16"
+                (click)="logOut()" *ngIf="authService.UserData">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </button>
+            <button class="theme-switcher-btn d-flex flex-row align-items-center justify-content-center gap-2 font-16"
+                (click)="navigateToProfile()" *ngIf="authService.UserData">
+                <i class="fa-solid fa-user"></i> Profile
+            </button>
+            <button class="theme-switcher-btn d-flex flex-row align-items-center justify-content-center gap-2 font-16"
+                (click)="toggleDropdown()">
+                <i class="fa-solid fa-gear"></i> Theme
+            </button>
+            <div *ngIf="dropdownVisible"
+                style="position: absolute; top: 100%; padding: 5px; background: white; width: 100%; border: 1px solid rgba(128,128,128,0.2); border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); z-index: 10;">
+                <div class="theme-option" [class.active]="(themeService.theme$ | async) === 'light'"
+                    (click)="setTheme('light')" style="padding: 0.5rem; cursor: pointer;">
+                    🌞 Light
+                </div>
+                <div class="theme-option" [class.active]="(themeService.theme$ | async) === 'dark-variant'"
+                    (click)="setTheme('dark-variant')" style="padding: 0.5rem; cursor: pointer;">
+                    🌙 Dark
+                </div>
+                <div class="theme-option" [class.active]="(themeService.theme$ | async) === 'dark'"
+                    (click)="setTheme('dark')" style="padding: 0.5rem; cursor: pointer;">
+                    💜 Therapi
+                </div>
+            </div>
+        </div>
+
+        <div class="mobile_container d-flex align-items-center gap-3 d-sm-flex d-md-flex d-lg-none">
+            <button class="theme-switcher-btn font-14" (click)="toggleDropdown()">
+                <i class="fa-solid fa-gear"></i> Theme
+            </button>
+            <div class="theme_dropDown" *ngIf="dropdownVisible"
+                style="position: absolute; top: 100%; padding: 5px; background: white; width: 100%; border: 1px solid rgba(128,128,128,0.2); border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); z-index: 10;">
+                <div class="theme-option" [class.active]="(themeService.theme$ | async) === 'light'"
+                    (click)="setTheme('light')" style="padding: 0.5rem; cursor: pointer;">
+                    🌞 Light
+                </div>
+                <div class="theme-option" [class.active]="(themeService.theme$ | async) ==='dark-variant'"
+                    (click)="setTheme('dark-variant')" style="padding: 0.5rem; cursor: pointer;">
+                    🌙 Dark
+                </div>
+                <div class="theme-option" [class.active]="(themeService.theme$ | async) === 'dark'"
+                    (click)="setTheme('dark')" style="padding: 0.5rem; cursor: pointer;">
+                    💜 Therapi
+                </div>
+            </div>
+            <div class="profile" *ngIf="authService.UserData">
+                <i class="fa-solid fa-circle-user font-36" (click)="toggleProfileDropdown()"></i>
+                <div class="profile_sub_menu" [ngClass]="{ 'show-dropdown': isProfileDropdownVisible }">
+                    <button class="theme-switcher-btn d-flex flex-row align-items-center justify-content-center gap-2"
+                        (click)="logOut()">
+                        <i class="fa-solid fa-right-from-bracket"></i> Logout
+                    </button>
+                    <button class="theme-switcher-btn d-flex flex-row align-items-center justify-content-center gap-2"
+                        (click)="navigateToProfile()">
+                        <i class="fa-solid fa-user"></i> Profile
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

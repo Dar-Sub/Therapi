@@ -1,0 +1,294 @@
+.purchase {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .subscription-container {
+        font-family: 'Arial', sans-serif;
+        color: var(--text-color);
+        /* Use global text color */
+        min-height: 100vh;
+        // overflow-y: scroll;
+        padding: 20px;
+        width: 100%;
+        max-width: 1000px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 70px;
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 15px;
+
+
+            .user-info {
+                color: var(--text-color);
+                /* Use global text color */
+                font-size: 14px;
+            }
+
+            .action-buttons {
+                display: flex;
+
+                button {
+                    background-color: var(--primary-color);
+                    //  color: white;
+                    border: 1px solid var(--primary-color);
+                    /* Use global primary color */
+                    color: white;
+                    padding: 6px 12px;
+                    margin-left: 10px;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    transition: background-color 0.3s;
+
+                    &:hover {
+                        background-color: var(--primary-color);
+                        color: white;
+                        opacity: 0.9;
+                        transform: scale(1.03) translateZ(0px);
+                    }
+
+                    &.logout-button {
+                        background-color: #f47b7b;
+                        border-color: #f47b7b;
+
+                        &:hover {
+                            background-color: #d05a5a;
+                        }
+                    }
+                }
+            }
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: flex-start;
+            gap: 10px;
+            border-bottom: 2px solid var(--card-bg);
+            margin-bottom: 20px;
+
+            .tab {
+                padding: 10px 20px;
+                background: none;
+                color: var(--text-color);
+                cursor: pointer;
+                font-size: 16px;
+                transition: color 0.3s, border-bottom 0.3s;
+
+                &.active {
+                    color: var(--primary-color);
+                    border: 2px solid var(--primary-color);
+                    border-bottom: none;
+                    // border-bottom: 2px solid var(--primary-color);
+                }
+
+                &:hover {
+                    color: var(--primary-color);
+                }
+            }
+        }
+
+        .cards-section {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 80px 30px;
+            gap: 20px;
+            /* Add spacing between cards */
+
+            .card {
+                background-color: var(--card-bg);
+                /* Use global card background */
+                border-radius: 12px;
+                text-align: center;
+                padding: 30px;
+                width: 280px;
+                height: 100%;
+                min-height: 350px;
+                gap: 15px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                justify-content: space-between;
+
+                &:hover {
+                    transform: scale(1.05); // Slightly lift the card
+                    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); // Add a larger shadow
+                    border: 2px solid var(--primary-color); // Add a border on hover
+                }
+
+
+                h3 {
+                    font-size: 20px;
+                    font-weight: 600;
+                    color: var(--text-color);
+                    /* Use global text color */
+                    margin-bottom: 10px;
+                }
+
+                .price {
+                    font-size: 28px;
+                    font-weight: 600;
+                    color: var(--primary-color);
+                    /* Use global primary color */
+                    margin-bottom: 10px;
+                }
+
+                .description {
+                    font-size: 14px;
+                    color: var(--text-color);
+                    /* Use global text color */
+                    opacity: 0.8;
+                    /* Reduce opacity slightly for better readability */
+                    margin-bottom: 20px;
+                }
+
+                .purchase-btn {
+                    background-color: var(--primary-color);
+                    /* Use global primary color */
+                    color: var(--chat-text-color);
+                    /* Use global background color for contrast */
+                    border: none;
+                    border-radius: 6px;
+                    padding: 10px 20px;
+                    font-size: 14px;
+                    cursor: pointer;
+                    transition: background-color 0.3s;
+
+                    &:hover {
+                        background-color: #6847c6;
+                        /* Slightly darker for hover */
+                    }
+                }
+            }
+        }
+
+        .redeem-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 100px;
+            margin: 80px 30px;
+
+            h3 {
+                font-size: 20px;
+                color: var(--text-color);
+                margin-bottom: 10px;
+            }
+
+            .redeem-input {
+                width: 50%;
+                padding: 15px 25px;
+                margin-bottom: 20px;
+                border: none;
+                border-radius: 15px;
+                background-color: var(--card-bg);
+                color: var(--text-color);
+                font-size: 1rem;
+                backdrop-filter: blur(5px);
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+                transition: all 0.3s ease;
+
+                &:focus {
+                    border-color: var(--primary-color);
+                    box-shadow: 0 0 5px #6e5aa7;
+                    outline: none;
+                }
+            }
+
+            .redeem-btn {
+                background-color: var(--primary-color);
+                color: var(--chat-text-color);
+                padding: 15px 35px;
+                border-radius: 15px;
+                border: none;
+                cursor: pointer;
+                width: 50%;
+                transition: background-color 0.3s, transform 0.2s;
+
+                &:hover {
+                    opacity: 0.9;
+                    transform: scale(1.03) translateZ(0px);
+                }
+            }
+        }
+    }
+}
+
+.tabs button {
+    border: 2px solid var(--primary-color);
+    border-bottom: none;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.purchase_main_content {
+    width: 100%;
+    border: 2px solid var(--primary-color);
+    position: relative;
+    border-radius: 0 12px 12px 12px;
+    border-top-left-radius: 0px;
+    background-color: var(--card-bg);
+}
+
+.tabs {
+    position: absolute;
+    top: -46px;
+    left: -2px;
+    background-color: var(--card-bg);
+}
+
+@media screen and (max-width:599px) {
+    .purchase {
+        margin-top: 48px;
+    }
+
+    .purchase_main_content {
+        width: 100%;
+    }
+
+    .top-bar {
+        gap: 20px;
+    }
+
+    .action-buttons button {
+        font-size: 12px;
+    }
+
+    .profile-button {
+        margin-left: 0 !important;
+    }
+
+    .redeem-input {
+        width: 100% !important;
+    }
+
+    .redeem-btn {
+        width: 100% !important;
+    }
+
+}
+
+@media screen and (min-width:600px) and (max-width:1023px) {
+    .purchase {
+        margin-top: 48px;
+    }
+
+    .redeem-input {
+        width: 100% !important;
+    }
+
+    .redeem-btn {
+        width: 100% !important;
+    }
+}

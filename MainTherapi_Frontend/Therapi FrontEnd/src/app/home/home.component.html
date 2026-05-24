@@ -1,0 +1,45 @@
+<div class="app">
+    <div>
+        <div class="container">
+            <div class="hero">
+                <h1 class="font-64 fw-800 text-a-c">
+                    Welcome to THERAPi
+                </h1>
+                <p class="font-20 text-a-c">
+                    Your AI-powered mental health companion
+                </p>
+                <div class="text-a-c mb-5">
+                    <button class="btn font-18" (click)="route()">{{authService.UserData ? "Start chat" : "Login to
+                        Start"}}</button>
+                </div>
+            </div>
+
+            <div class="home_card_container">
+                <div class="home_card d-flex flex-column gap-2">
+                    <h2 class="font-24">24/7 Support</h2>
+                    <p class="font-16">Access therapeutic support anytime, anywhere. Our AI is always here to listen and
+                        help you
+                        process your thoughts and feelings.</p>
+                </div>
+
+                <div class="home_card d-flex flex-column gap-2">
+                    <h2 class="font-24">Personalized Experience</h2>
+                    <p class="font-16">Our AI adapts to your unique needs and communication style, providing a tailored
+                        therapeutic
+                        experience for your mental well-being.</p>
+                </div>
+
+                <div class="home_card d-flex flex-column gap-2">
+                    <h2 class="font-24">Complete Privacy</h2>
+                    <p class="font-16">Your conversations are completely private and secure. Feel safe sharing your
+                        thoughts in a
+                        confidential environment.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <ng-template #chatInterface>
+        <p>welcome to chat</p>
+    </ng-template> -->
+</div>

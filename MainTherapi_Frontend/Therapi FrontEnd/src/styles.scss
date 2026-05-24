@@ -1,0 +1,515 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+
+html {
+  @include mat.theme((color: (theme-type: light,
+        primary: mat.$azure-palette,
+        tertiary: mat.$blue-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    ));
+}
+
+/* You can add global styles to this file, and also import other style files */
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+// @use '@angular/material' as mat;
+
+// html {
+//   @include mat.theme((
+//     color: (
+//       theme-type: light,
+//       primary: mat.$azure-palette,
+//       tertiary: mat.$blue-palette,
+//     ),
+//     typography: Roboto,
+//     density: 0,
+//   ));
+// }
+:root {
+  /* Light theme variables */
+  --light-primary-color: #6e5aa7;
+  --light-bg: #FFFFFF;
+  --light-card-bg: #F4F4F5;
+  --light-text-color: #18181B;
+  --light-chat-text-color: #FFFFFF;
+
+  /* Dark theme variables */
+  --dark-primary-color: #6e5aa7;
+  --dark-bg: #1A1625;
+  --dark-card-bg: #2a2640;
+  --dark-text-heading-color: #E4E4E7;
+  --dark-text-color: #b3b3b3;
+  --dark-chat-text-color: #FFFFFF;
+
+  /* Additional Dark Theme Variant (Using the same dark colors from your code) */
+  --bw-primary-color: #FFFFFF;
+  --bw-bg: #000000;
+  --bw-card-bg: #1A1A1A;
+  --bw-text-heading-color: #FFFFFF;
+  --bw-text-color: #FFFFFF;
+  --bw-chat-text-color: #000000;
+}
+
+/* Light theme (default) */
+:root[data-theme="light"] {
+  --primary-color: var(--light-primary-color);
+  --bg-color: var(--light-bg);
+  --card-bg: var(--light-card-bg);
+  --text-color: var(--light-text-color);
+  --chat-text-color: var(--light-chat-text-color);
+}
+
+/* Dark theme */
+:root[data-theme="dark"] {
+  --primary-color: var(--dark-primary-color);
+  --bg-color: var(--dark-bg);
+  --card-bg: var(--dark-card-bg);
+  --text-color: var(--dark-text-color);
+  --chat-text-color: var(--dark-chat-text-color);
+}
+
+/* Dark theme variant (if you want an alternate dark mode) */
+:root[data-theme="dark-variant"] {
+  --primary-color: var(--bw-primary-color);
+  --bg-color: var(--bw-bg);
+  --card-bg: var(--bw-card-bg);
+  --text-color: var(--bw-text-color);
+  --chat-text-color: var(--bw-chat-text-color);
+}
+
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.btn {
+  background-color: var(--primary-color);
+  color: var(--chat-text-color);
+  border: none;
+  padding: 20px 40px;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+  // transition: opacity 0.2s;
+
+}
+
+.btn:hover {
+  background-color: var(--primary-color);
+  color: var(--chat-text-color);
+  opacity: 0.9;
+  transform: scale(1.03) translateZ(0px);
+}
+
+.home_card {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  height: 100%;
+  transition: background-color 0.3s;
+}
+
+.theme-switcher {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  // background-color: var(--card-bg);
+  border-radius: 8px;
+}
+
+.theme-option {
+  color: black;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.theme-option.active {
+  background-color: #615b5b85;
+  color: white;
+}
+
+:root[data-theme="dark-variant"] .theme-option.active {
+  background-color: #615b5b85;
+  color: white !important;
+}
+
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+//Text alignments
+.text-a-s {
+  text-align: start;
+}
+
+.text-a-c {
+  text-align: center;
+}
+
+.text-a-e {
+  text-align: end;
+}
+
+.text-a-j {
+  text-align: justify;
+}
+
+
+// font-weight
+.fw-900 {
+  font-weight: 900 !important;
+}
+
+.fw-800 {
+  font-weight: 800 !important;
+}
+
+.fw-700 {
+  font-weight: 700 !important;
+}
+
+.fw-600 {
+  font-weight: 600 !important;
+}
+
+.fw-500 {
+  font-weight: 500 !important;
+}
+
+.fw-400 {
+  font-weight: 400 !important;
+}
+
+.fw-300 {
+  font-weight: 300 !important;
+}
+
+// font-size
+@media screen and (max-width: 599px) {
+  .font-110 {
+    font-size: 50px;
+  }
+
+  .font-64 {
+    font-size: 35px;
+  }
+  
+  .font-42 {
+    font-size: 30px;
+  }
+
+  .font-45 {
+    font-size: 32px;
+  }
+
+  .font-40 {
+    font-size: 29px;
+  }
+
+  .font-38 {
+    font-size: 26px;
+  }
+
+  .font-36 {
+    font-size: 25px;
+  }
+
+  .font-32 {
+    font-size: 22px;
+  }
+
+  .font-30 {
+    font-size: 20px;
+  }
+
+  .font-24 {
+    font-size: 16px;
+  }
+
+  .font-22 {
+    font-size: 15px;
+  }
+
+  .font-20 {
+    font-size: 17px;
+  }
+
+  .font-18 {
+    font-size: 15px;
+  }
+
+  .font-16 {
+    font-size: 14px;
+  }
+
+  .font-15 {
+    font-size: 14px;
+  }
+
+  .font-14 {
+    font-size: 13px;
+  }
+
+  .font-12 {
+    font-size: 11px;
+  }
+  .font-10 {
+    font-size: 10px;
+  }
+
+  .ht-60 {
+    height: 40vh;
+  }
+  .pad-tb-3{
+    padding: 8% 0;
+  }
+  .pad-tb-2{
+    padding: 7% 0;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1023px) {
+  .font-110 {
+    font-size: 90px;
+  }
+
+  .font-64 {
+    font-size: 50px;
+  }
+
+  .font-45 {
+    font-size: 45px;
+  }
+  
+  .font-42 {
+    font-size: 42px;
+  }
+
+  .font-40 {
+    font-size: 40px;
+  }
+
+  .font-38 {
+    font-size: 38px;
+  }
+
+  .font-36 {
+    font-size: 35px;
+  }
+
+  .font-32 {
+    font-size: 24px;
+  }
+
+  .font-30 {
+    font-size: 30px;
+  }
+
+  .font-24 {
+    font-size: 15px;
+  }
+
+  .font-22 {
+    font-size: 16px;
+  }
+
+  .font-20 {
+    font-size: 20px;
+  }
+
+  .font-18 {
+    font-size: 18px;
+  }
+
+  .font-16 {
+    font-size: 16px;
+  }
+
+  .font-15 {
+    font-size: 15px;
+  }
+
+  .font-14 {
+    font-size: 14px;
+  }
+
+  .font-12 {
+    font-size: 12px;
+  }
+  .font-10 {
+    font-size: 10px;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1560px) {
+  .font-110 {
+    font-size: 110px;
+  }
+
+  .font-64 {
+    font-size: 64px;
+  }
+
+  .font-45 {
+    font-size: 50px;
+  }
+
+  .font-42 {
+    font-size: 42px;
+  }
+
+  .font-40 {
+    font-size: 40px;
+  }
+
+  .font-38 {
+    font-size: 38px;
+  }
+
+  .font-36 {
+    font-size: 36px;
+  }
+
+  .font-32 {
+    font-size: 32px;
+  }
+
+  .font-30 {
+    font-size: 30px;
+  }
+
+  .font-24 {
+    font-size: 24px;
+  }
+
+  .font-22 {
+    font-size: 22px;
+  }
+
+  .font-20 {
+    font-size: 20px;
+  }
+
+  .font-18 {
+    font-size: 18px;
+  }
+
+  .font-16 {
+    font-size: 16px;
+  }
+
+  .font-15 {
+    font-size: 15px;
+  }
+
+  .font-14 {
+    font-size: 14px;
+  }
+
+  .font-12 {
+    font-size: 12px;
+  }
+
+  .font-10 {
+    font-size: 10px;
+  }
+}
+
+@media screen and (min-width: 1561px) {
+  .font-110 {
+    font-size: 130px;
+  }
+
+  .font-64 {
+    font-size: 70px;
+  }
+
+  .font-45 {
+    font-size: 60px;
+  }
+  
+  .font-42 {
+    font-size: 58px;
+  }
+
+  .font-40 {
+    font-size: 55px;
+  }
+
+  .font-38 {
+    font-size: 50px;
+  }
+
+  .font-36 {
+    font-size: 40px;
+  }
+
+  .font-32 {
+    font-size: 36px;
+  }
+
+  .font-30 {
+    font-size: 30px;
+  }
+
+  .font-24 {
+    font-size: 26px;
+  }
+
+  .font-22 {
+    font-size: 24px;
+  }
+
+  .font-20 {
+    font-size: 22px;
+  }
+
+  .font-18 {
+    font-size: 18px;
+  }
+
+  .font-16 {
+    font-size: 16px;
+  }
+
+  .font-15 {
+    font-size: 17px;
+  }
+
+  .font-14 {
+    font-size: 14px !important;
+  }
+
+  .font-12 {
+    font-size: 16px;
+  }
+  .font-10 {
+    font-size: 12px;
+  }
+}

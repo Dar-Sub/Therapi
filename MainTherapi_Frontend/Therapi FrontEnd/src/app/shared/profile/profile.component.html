@@ -1,0 +1,33 @@
+<div class="profile_main">
+    <div class="profile-container">
+        <div class="profile-page">
+            <div class="profile-header">
+                <!-- <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile Picture"
+                    class="profile-picture" /> -->
+                <h1 class="profile-name">{{userName}}</h1>
+                <!-- <p class="profile-email">Email</p>
+                <button class="edit-profile-button">Edit Profile</button> -->
+
+                <div class="profile_plan d-flex flex-column p-4">
+                    <div class="sessions d-flex flex-row justify-content-between">
+                        <span>Available Sessions</span>
+                        <span>12</span>
+                    </div>
+                    <hr>
+                    <div class="d-flex flex-row justify-content-between">
+                        <span>Monthly Subscription</span>
+                        <span>28 days remaining</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-body">
+                <div class="account-settings">
+                    <button class="settings-button" (click)="purchaseMore()">Purchase More</button>
+                    <button class="settings-button" (click)="logOut()">Logout</button>
+                    <button class="settings-button" (click)="starChat()">Start Chat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

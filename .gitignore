@@ -1,0 +1,35 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vs/
+.idea/
+*.user
+*.suo
+.qodo/
+
+# .NET
+**/bin/
+**/obj/
+**/out/
+**/publish/
+*.log
+
+# Node / Angular
+**/node_modules/
+**/dist/
+.angular/
+
+# Secrets — use appsettings.example.json as a template
+**/appsettings.json
+**/appsettings.Development.json
+**/appsettings.*.json
+!**/appsettings.example.json
+
+# Env files
+.env
+.env.*
+
+# Nested repos (if re-cloned with submodules)
+**/.git/

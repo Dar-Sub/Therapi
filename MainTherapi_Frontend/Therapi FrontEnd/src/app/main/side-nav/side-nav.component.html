@@ -1,0 +1,21 @@
+<div class="sidenav">
+    <div class="list-items d-flex flex-row  d-sm-flex d-md-flex d-lg-none justify-content-end align-items-center w-100">
+        <i class="fa-solid fa-xmark" (click)="closeSidenav()"></i>
+        <!-- <i class="fa-regular fa-pen-to-square fa-lg" style="color: var(--text-color);" matTooltip="Create New Session"
+            (click)="onClick(false);"></i> -->
+    </div>
+    <mat-nav-list>
+        <div class="section-header d-flex flex-row align-items-center justify-content-between font-16"> <span>Your Sessions</span>
+            <i class="fa-regular fa-pen-to-square fa-lg" style="color: var(--text-color);"
+                matTooltip="Create New Session" [matTooltipPosition]="'above'" (click)="onClick(false);"></i>
+        </div>
+        <!-- <hr class="section-hr"> -->
+        <div class="sessions-list" *ngFor="let session of sessions">
+            <p class="font-14" (click)="closeSidenavItem(session.threadId)"
+                [class.active-session]="session.threadId === activeSessionId">
+                {{ session.name }}
+            </p>
+
+        </div>
+    </mat-nav-list>
+</div>

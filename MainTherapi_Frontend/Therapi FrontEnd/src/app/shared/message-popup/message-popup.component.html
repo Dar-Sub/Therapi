@@ -1,0 +1,13 @@
+<div class="popup-overlay" *ngIf="visible">
+    <div class="popup">
+        <button class="close-btn" (click)="closePopup()">×</button>
+        <div class="popup-icon" *ngIf="icon">
+            <img [src]="icon" alt="Popup Icon" />
+        </div>
+        <h2 class="popup-title">{{ title }}</h2>
+        <p class="popup-message">{{ message }}</p>
+        <div class="popup-actions" *ngIf="actionText">
+            <button class="action-btn" (click)="onAction()">{{ actionText }}</button>
+        </div>
+    </div>
+</div>

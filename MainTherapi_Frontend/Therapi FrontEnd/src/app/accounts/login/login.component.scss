@@ -1,0 +1,184 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.login-card {
+    background-color: var(--card-bg);
+    border-radius: 30px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1.5rem;
+}
+.input-group{
+    margin-bottom: 20px;
+}
+.input-field {
+    width: 100%;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 15px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    font-size: 1rem;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.input-field::placeholder {
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+.input-field:focus {
+    outline: 2px solid var(--primary-color);
+}
+
+.input-group:not(.has-validation)>.dropdown-toggle:nth-last-child(n+3),
+.input-group:not(.has-validation)>.form-floating:not(:last-child)>.form-control,
+.input-group:not(.has-validation)>.form-floating:not(:last-child)>.form-select,
+.input-group:not(.has-validation)>:not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating) {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.password-group {
+    // position: relative;
+}
+.password-group-body{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100% ;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    // top: 40%;
+    // transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+.toggle-password i {
+    transition: all 0.3s ease;
+}
+
+.login-button,
+.signup-button {
+    width: 100%;
+    padding: 15px 35px;
+    border-radius: 15px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.login-button {
+    position: relative;
+    padding-left: 2rem;
+    background-color: var(--primary-color);
+    color: var(--chat-text-color);
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.login-button:hover {
+    opacity: 0.9;
+    transform: scale(1.03) translateZ(0px);
+}
+
+.login-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.signup-button {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    margin-top: 0.5rem;
+}
+
+.signup-button:hover {
+    transform: scale(1.03) translateZ(0px);
+    // background-color: var(--primary-color);
+    // color: var(--bg-color);
+    opacity: 0.9;
+}
+
+.spinner-border {
+    position: absolute;
+    left: 85px;
+    top: 26%;
+}
+
+::ng-deep.spinner-border {
+    height: 25px;
+    width: 25px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .login-container {
+        padding: 1.5rem;
+    }
+
+    .login-card {
+        padding: 1.5rem;
+    }
+
+    .input-field {
+        font-size: 0.9rem;
+        padding: 12px 20px;
+    }
+
+    .toggle-password {
+        font-size: 1rem;
+    }
+
+    .login-button,
+    .signup-button {
+        padding: 12px 30px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 1rem;
+    }
+
+    .input-field {
+        font-size: 0.85rem;
+        padding: 10px 15px;
+    }
+
+    .login-button,
+    .signup-button {
+        padding: 10px 25px;
+        font-size: 0.85rem;
+    }
+}
